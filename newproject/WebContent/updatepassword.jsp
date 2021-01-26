@@ -74,6 +74,38 @@ a{
 
 
 </head>    
+
+<%
+
+%>
+<body>    
+    <h2>Change Password</h2><br>    
+   
+    <div class="login">    
+    <form id="changepassword" method="get" action="studentupdatepass.jsp">    
+        <label><b>current password    
+        </b>    
+        </label>    
+        <input type="text" name="cupass" id="cupass" placeholder="Enter current Username">    
+        <br><br>    
+        <label><b> new Password     
+        </b>    
+        </label>    
+        <input type="text" name="npass" id="nPass" placeholder="Enter new Password">    
+        <br><br>    
+
+        <label><b> confirm Password     
+        </b>    
+        </label>    
+        <input type="text" name="cpass" id="cPass" placeholder="Enter confirm new Password">    
+        <br><br>    
+
+
+
+        <input type="submit" name="submit" id="log" value="Change Password">           
+        <br><br>    
+    </form>     
+</div>
 <script language="javascript">
 function fncSubmit()
 {
@@ -108,37 +140,6 @@ return false;
 
 document.changepassword.submit();
 }
-</script>
-<%
-
-%>
-<body>    
-    <h2>Change Password</h2><br>    
-   
-    <div class="login">    
-    <form id="changepassword" method="get" action="studentupdatepass.jsp">    
-        <label><b>current password    
-        </b>    
-        </label>    
-        <input type="text" name="cupass" id="cupass" placeholder="Enter current Username">    
-        <br><br>    
-        <label><b> new Password     
-        </b>    
-        </label>    
-        <input type="text" name="npass" id="nPass" placeholder="Enter new Password">    
-        <br><br>    
-
-        <label><b> confirm Password     
-        </b>    
-        </label>    
-        <input type="text" name="cpass" id="cPass" placeholder="Enter confirm new Password">    
-        <br><br>    
-
-
-
-        <input type="submit" name="submit" id="log" value="Change Password">           
-        <br><br>    
-    </form>     
-</div>    
+</script>    
 </body>    
 </html> 

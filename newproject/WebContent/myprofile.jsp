@@ -212,7 +212,7 @@ https://templatemo.com/tm-529-ramayana
               <ul>
                 <li><a href="student_home.jsp">Home</a></li>
                 <li><a href="myprofile.jsp">My Profile</a></li>
-                <li><a href="myperformance.html">My performance</a></li>
+                <li><a href="MyPerformance.jsp">My performance</a></li>
                 <li><a href="NewCompanies.jsp">New Companies</a></li>
                 <li><a href="updatepassword.jsp">Change Password</a></li>
                 <li><a href="logout.jsp">Logout</a></li>
