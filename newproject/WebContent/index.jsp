@@ -110,7 +110,7 @@
               <ul>
                 <li>
                   <span class="opener">Login</span>
-                  <span><a href="about_us.jsp"> About Us</a></span>
+                  
                   <ul>
                     <li><a href="Adminlogin.jsp"> Admin Login</a></li>
                     <li><a href="Studentlogin.jsp">Student Login</a></li>
@@ -121,7 +121,7 @@
                 
               </ul>
             </nav>
-
+			<span><a href="about_us.jsp"> About Us</a></span>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
             <!-- Footer -->
