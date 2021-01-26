@@ -79,10 +79,33 @@ a{
 
 %>
 <body>    
-    <h2>Change Password</h2><br>    
+    <h2>Change Password</h2><br>  
+      
    
-    <div class="login">    
-    <form id="changepassword" method="get" action="studentupdatepass.jsp">    
+    <div class="login"> 
+    <script>  
+function verifyPassword() {  
+  var pw = document.getElementById("cupass").value;
+  var nPass = document.getElementById("nPass").value;  
+  var cPass = document.getElementById("cPass").value;  
+  //check empty password field  
+  if(cupass == "") {  
+     document.getElementById("message").innerHTML = "**Fill the password please!";  
+     return false;  
+  }  
+   
+ //minimum password length validation  
+  if(nPass!=cPass) {  
+     document.getElementById("message").innerHTML = "**Password Does Not Match!!";  
+     return false;  
+  }  
+   else {  
+     alert("Password is correct");  
+  }  
+}  
+</script>  
+       
+    <form onsubmit ="return verifyPassword()" method="get" action="studentupdatepass.jsp">    
         <label><b>current password    
         </b>    
         </label>    
@@ -102,11 +125,11 @@ a{
 
 
 
-        <input type="submit" onclick="fncSubmit()" name="submit" id="log" value="Change Password">           
+        <input type="submit"  name="submit" id="log" value="Change Password">           
         <br><br>    
     </form>     
 </div>
-<script language="javascript">
+<!-- <script type="text/javascript">
 function fncSubmit()
 {
 
@@ -140,6 +163,6 @@ return false;
 
 document.changepassword.submit();
 }
-</script>    
+</script>     -->
 </body>    
 </html> 
