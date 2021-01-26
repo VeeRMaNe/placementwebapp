@@ -102,7 +102,7 @@ a{
 
 
 
-        <input type="submit" name="submit" id="log" value="Change Password">           
+        <input type="submit" onclick="fncSubmit()" name="submit" id="log" value="Change Password">           
         <br><br>    
     </form>     
 </div>
