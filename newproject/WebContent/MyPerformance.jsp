@@ -66,7 +66,14 @@ https://templatemo.com/tm-529-ramayana
 									<h2>STUDENTS</h2>
 								</div>
 								<div class="default-table">
-									<table>
+								 <%
+								       	HttpSession hs = request.getSession();
+								        String prn = (String)hs.getAttribute("prn");
+								        if(prn==null){
+								        	response.sendRedirect("Studentlogin.jsp");
+								        }
+								        else{%>
+								        	<table>
 										<thead>
 											<tr>
 												<th>Company Name</th>
@@ -88,8 +95,8 @@ https://templatemo.com/tm-529-ramayana
 										</thead>
 										<tbody>
 											<%
-												HttpSession hs = request.getSession();
-												String prn = (String) hs.getAttribute("prn");
+												//HttpSession hss = request.getSession();
+												//String prn = (String) hs.getAttribute("prn");
 												List<Feedback> l = Daolayer.getstudentfeedback(prn);
 
 												for (Feedback s : l)
@@ -120,6 +127,8 @@ https://templatemo.com/tm-529-ramayana
 
 
 									</table>
+								        <% }%>
+									
 								</div>
 
 							</div>

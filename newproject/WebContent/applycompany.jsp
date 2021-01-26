@@ -18,8 +18,8 @@ System.out.println(prn);
 boolean info=Daolayer.getStudentInfo (prn,compname);
 System.out.println(info);
 if( info==true){%>
-	<h2>Applied Successfully.</h2>
-	<a href="NewCompanies.jsp"><button>Back</button></a>
+	<script>alert("applied successfully");</script>
+	<jsp:include page="NewCompanies.jsp"></jsp:include>
 <% 
 }
 else{

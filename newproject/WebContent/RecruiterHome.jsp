@@ -65,6 +65,15 @@ https://templatemo.com/tm-529-ramayana
 									<h2>STUDENTS</h2>
 								</div>
 								<div class="default-table">
+								<% 
+								HttpSession hs = request.getSession();
+								String compid = (String) hs.getAttribute("compid");
+								//String compid = request.getParameter("compid");
+								System.out.println(compid);
+								if(compid==null){
+									response.sendRedirect("Recruiterlogin.jsp");
+								}
+								else{ %>
 									<table>
 										<thead>
 											<tr>
@@ -77,22 +86,17 @@ https://templatemo.com/tm-529-ramayana
 												<th>Diploma</th>
 												<th>Degree</th>
 												<th>Branch</th>
-												<th>Actions</th>
+												
 											</tr>
 										</thead>
 										<tbody>
 											<%
-											HttpSession hs = request.getSession();
-											String compid = (String) hs.getAttribute("compid");
-											//String compid = request.getParameter("compid");
-											System.out.println(compid);
 											
 											String compname = Daolayer.getCompanyName(compid);
 											
-												
 											
-												System.out.println(compname);
 											
+											System.out.println(compname);
 											List<Student> l=Daolayer.getstudentsinfo(compname);
 											
 												for (Student s : l)
@@ -120,16 +124,16 @@ https://templatemo.com/tm-529-ramayana
 												boolean check_applied = Daolayer.checkSelectedStudent(prn, compname);
 												
 												if(check_applied==true){ %>
-													<td><button>Selected</button></td>
+													<td><button>Selected</button>&nbsp &nbsp<a href="Feedbackform.jsp?prn=<%=s.getPrn()%>"><button>Feedback</button></a></td>
 													<% 
 												}
 												else{ %>
-												<td><a href="Placedstudent.jsp?prn=<%=s.getPrn()%>">Select</a></td>
+												<td><a href="Placedstudent.jsp?prn=<%=s.getPrn()%>">Select</a>&nbsp &nbsp<a href="Feedbackform.jsp?prn=<%=s.getPrn()%>"><button>Feedback</button></a></td>
 											<% 	
 											}
 											%>
 
-												<td><a href="Feedbackform.jsp?prn=<%=s.getPrn()%>">Feedback</a></td>
+												
 											</tr>
 
 										</tbody>
@@ -141,6 +145,13 @@ https://templatemo.com/tm-529-ramayana
 
 
 									</table>
+									
+									
+									<% 
+								}
+								
+								%>
+									
 								</div>
 
 							</div>

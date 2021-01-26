@@ -80,7 +80,7 @@ a{
 </head>    
 <body>    
     <h2> Recruiter Login Page</h2><br>    
-    <div class="login">    
+    <div class="login" align="center">    
     <form id="login" method="post" action="RecruiterAuth.jsp">    
         <label><b>User id
         </b>    <br>
@@ -92,8 +92,7 @@ a{
         </label>    
         <input type="password" name="comppass" id="Pass" placeholder="Password"required>    
         <br><br>
-        <input type="submit" name="log" id="log" value="Log In Here"
-        >       
+        <input type="submit" name="log" id="log" value="Log In">      
         <br><br>    
          
          

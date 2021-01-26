@@ -104,65 +104,34 @@ function verifyPassword() {
   }  
 }  
 </script>  
-       
-    <form onsubmit ="return verifyPassword()" method="get" action="studentupdatepass.jsp">    
-        <label><b>current password    
-        </b>    
-        </label>    
-        <input type="text" name="cupass" id="cupass" placeholder="Enter current Username">    
+       <%
+       	HttpSession hs = request.getSession();
+        String prn = (String)hs.getAttribute("prn");
+        if(prn==null){
+        	response.sendRedirect("Studentlogin.jsp");
+        }
+        else{ %>
+        	<form onsubmit ="return verifyPassword()" method="get" action="studentupdatepass.jsp">    
+        <label><b>current password &nbsp &nbsp</b></label>    
+        <input type="text" name="cupass" id="cupass" placeholder="Enter current Username" required>
+         
         <br><br>    
-        <label><b> new Password     
-        </b>    
-        </label>    
-        <input type="text" name="npass" id="nPass" placeholder="Enter new Password">    
-        <br><br>    
-
-        <label><b> confirm Password     
-        </b>    
-        </label>    
-        <input type="text" name="cpass" id="cPass" placeholder="Enter confirm new Password">    
+        <label><b> new Password &nbsp &nbsp &nbsp &nbsp</b></label>    
+        <input type="text" name="npass" id="nPass" placeholder="Enter new Password" required>
+           
         <br><br>    
 
-
-
-        <input type="submit"  name="submit" id="log" value="Change Password">           
+        <label><b> confirm Password &nbsp</b></label>    
+        <input type="text" name="cpass" id="cPass" placeholder="Enter confirm new Password" required><br><br>
+        <span id = "message" style="color:red"> </span>    
         <br><br>    
-    </form>     
+       <h3 align="center"> <input type="submit"  value="Change Password" ></h3>           
+          
+    </form>   
+        <% }
+       %>
+      
 </div>
-<!-- <script type="text/javascript">
-function fncSubmit()
-{
 
-if(document.changepassword.cupass.value == "")
-{
-alert('Please input old password');
-document.changepassword.cupass.focus();
-return false;
-} 
-
-if(document.changepassword.newpassword.value == "")
-{
-alert('Please input Password');
-document.changepassword.npass.focus(); 
-return false;
-} 
-
-if(document.changepassword.cpass.value == "")
-{
-alert('Please input Confirm Password');
-document.changepassword.cpass.focus(); 
-return false;
-} 
-
-if(document.changepassword.npass.value != document.changepassword.cpass.value)
-{
-alert('Confirm Password Not Match');
-document.changepassword.conpassword.focus(); 
-return false;
-} 
-
-document.changepassword.submit();
-}
-</script>     -->
 </body>    
 </html> 

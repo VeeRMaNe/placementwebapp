@@ -10,7 +10,10 @@
 <body>
  
  <%
+
+ 
  String compid=request.getParameter("compid");
+ System.out.println(compid);
  boolean delete=Daolayer.deletecompany(compid);
  
  if (delete==true)

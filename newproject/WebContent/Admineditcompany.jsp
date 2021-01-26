@@ -123,8 +123,8 @@ a{
         <input type="text" name="role" id="name" value=<%=c.getRole() %>  placeholder="Job role" required> 
         <br><br>
 
-        <label><b>Date</b></label>    <br>
-        <input type="text" name="date" id="name" value=<%=c.getDate()%> placeholder="Company Date" required> 
+        <label><b>Drive Date</b></label>    <br>
+        <input type="text" name="date" id="name" value=<%=c.getDate()%> placeholder="Drive Date" required> 
         <br><br>
 
         <input type="submit" name="submit"  id="log" value="save">       

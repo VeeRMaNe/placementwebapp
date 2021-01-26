@@ -82,46 +82,56 @@ https://templatemo.com/tm-529-ramayana
             List<Company> l =Daolayer.selectallcompanies();
             HttpSession hs = request.getSession();
             String prn = (String) hs.getAttribute("prn");
-            for(Company c:l)
-            
-            
-            
-            
-            {  %>
-                        
+            if(prn==null){
 				
-				
-				
+				response.sendRedirect("Studentlogin.jsp");
+				}
+            else{
+            	for(Company c:l)
+                    
+                    
+                	
+                    
+                {  %>
+                            
+    				
+    				
+    				
 
-						<tr>
-							<td><%=c.getCompid() %></td>
-							<td><%=c.getCompname() %></td>
-							<% String compname = c.getCompname(); %>
-							<td><%=c.getCriteria() %></td>
-							<td><%=c.getRole() %></td>
-							<td><%=c.getDate() %></td>
-							<%
-								boolean check_applied = Daolayer.checkAppliedStudent(prn, compname);
-								
-								if(check_applied==true){ %>
-									<td><button>Applied</button></td>
-									<% 
-								}
-								else{ %>
-								<td><a href="applycompany.jsp?compname=<%=compname%>"><button>Apply</button></a></td>
-							<% 	
-							}
-							%>
-							
-						</tr>
-				
-		
-				</tbody>
-                        <% 
+    						<tr>
+    							<td><%=c.getCompid() %></td>
+    							<td><%=c.getCompname() %></td>
+    							<% String compname = c.getCompname(); %>
+    							<td><%=c.getCriteria() %></td>
+    							<td><%=c.getRole() %></td>
+    							<td><%=c.getDate() %></td>
+    							<%
+    								
+    									boolean check_applied = Daolayer.checkAppliedStudent(prn, compname);
+    									
+    									if(check_applied==true){ %>
+    										<td><button>Applied</button></td>
+    										<% 
+    									}
+    									else{ %>
+    									<td><a href="applycompany.jsp?compname=<%=compname%>"><button>Apply</button></a></td>
+    								<% 	
+    								}
+    								
+    							%>
+    							
+    						</tr>
+    				
+    		
+    				</tbody>
+                            <%
+                }
             }
-				%>
-                        
-                       
+    				%>
+                            
+
+            
+                                   
                       </table>
                     </div>
                    

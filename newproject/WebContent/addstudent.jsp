@@ -108,10 +108,10 @@ a{
 
         <label><b>Last Name</b></label>    
         <input type="text" name="lname" id="name"   placeholder="Students last name" required> 
-        <br><br>
+  
 
-        <label><b>Password</b></label>    
-        <input type="text" name="pass" id="name"   placeholder="Students Password" required> 
+        <!-- <label><b>Password</b></label> -->    
+        <input  name="pass" id="name" type="hidden" value="welcome@123"  placeholder="Students Password" required> 
         <br><br>
 
         <label><b>Email</b></label>    <br>

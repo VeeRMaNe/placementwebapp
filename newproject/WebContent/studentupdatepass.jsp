@@ -27,7 +27,6 @@ String str=(String)session.getAttribute("prn");
 else
 {
 	%>
-	<script>alert("password change fail");</script>
 	<jsp:include page="updatepassword.jsp"></jsp:include>
 	<%} %>
 

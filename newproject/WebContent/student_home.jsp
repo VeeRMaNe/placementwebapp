@@ -31,10 +31,12 @@
  <%
  String str=(String)session.getAttribute("prn");
  String name = (String) session.getAttribute("name");
+if(name==null){
+	response.sendRedirect("Studentlogin.jsp");
+}
 
- %>
-
-<body class="is-preload">
+else{%>
+	<body class="is-preload">
 
     <!-- Wrapper -->
     <div id="wrapper">
@@ -98,6 +100,10 @@
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/custom.js"></script>
 </body>
+
+	
+<%}
+ %>
 
 
   

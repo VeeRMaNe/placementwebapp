@@ -483,17 +483,46 @@ public class Daolayer {
 			
 			
 			//delete company by admin
-			public static boolean deletecompany(String prn)  {
-				System.out.println(prn);
+			public static boolean deletecompany(String compid)  {
+				System.out.println(compid);
 				boolean rowDeleted=false;
-				try (
-						PreparedStatement statement = conn.prepareStatement( DELETE_COMPANIES_SQL);) {
-					statement.setString(1, prn);
-					int x = statement.executeUpdate();
-					if(x>=1)
-						rowDeleted= true;
-					else
-						rowDeleted=false;
+				try  {
+					
+				
+						String select = "select * from companies where compid=?";
+						PreparedStatement ps = conn.prepareStatement(select);
+						ps.setString(1, compid);
+						ResultSet res = ps.executeQuery();
+						if(res.next()) {
+							
+							String compname = res.getString("compname");
+							System.out.println(compname);
+							String del  = "delete from info where compname=?";
+							PreparedStatement ps2 = conn.prepareStatement(del);
+							ps2.setString(1, compname);
+							int y = ps2.executeUpdate();
+							if(y>=1) {
+								System.out.println("Info delte ");
+								PreparedStatement statement = conn.prepareStatement("delete from companies where compid=?");
+								statement.setString(1, compid);
+								int x = statement.executeUpdate();
+								if(x>=1) {
+									rowDeleted = true;
+								}
+								else {
+									rowDeleted = false;
+								}
+							}
+							else {
+								rowDeleted = false;
+							}
+						}
+						else {
+							rowDeleted= false;
+						}
+					
+						
+				
 				}
 				catch(SQLException e) {
 					e.printStackTrace();

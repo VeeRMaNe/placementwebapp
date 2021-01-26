@@ -1205,7 +1205,7 @@ section.buttons .container-fluid {
     display: flex;
     position: relative;
     background-color: #535ba0;
-    margin: -100px -100px 1px -100px;
+    margin: -100px -100px 100px -100px;
 }
 
 #header .logo {

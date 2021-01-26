@@ -1,3 +1,4 @@
+<%@page import="org.apache.catalina.ha.backend.Sender"%>
 <%@page import="newproject.Student"%>
 <%@page import="newproject.Daolayer"%>
 <%@page import="java.util.List"%>>
@@ -49,140 +50,150 @@ https://templatemo.com/tm-529-ramayana
             <%
             
             String str=(String)session.getAttribute("prn");
-            List<Student> l =Daolayer.StudentProfilDetail(str);
-           
-            for(Student s:l)
-            	
-            {%>
-
-
-            <!-- Forms -->
-            <section class="forms">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="section-heading">
-                        <h2>My Profile</h2>
-                      </div>
-                      <form id="contact" action="myprofiledeatils.jsp" method="post">
-
-
-                        <div class="row">
-
-                          <div class="col-md-6">
-                            <fieldset>
-                                <label for="fname">First Name </label>
-                              <input name="fname" type="text" class="form-control"  value="<%=s.getFname() %>" id="fname" placeholder="Enter your First name..." disabled >
-                       
-                            </fieldset>
-                          </div>
-
-                          <div class="col-md-6">
-                            <fieldset>
-                                <label for="mname">Middle Name </label>
-                              <input name="mname" type="text" class="form-control"  value="<%=s.getMname() %>" id="mname" placeholder="Enter Your middle name..."disabled>
-                           
-                            </fieldset>
-                          </div>
-
-                          <div class="col-md-6">
-                            <fieldset>
-                                <label for="lname"> Last Name </label>
-                              <input name="lname" type="text" class="form-control"  value="<%=s.getLname() %>" id="lname" placeholder="Enter Your Lastname..." disabled>
-                           
-                            </fieldset>
-                          </div>
-
-                          <div class="col-md-6">
-                            <fieldset>
-                                <label for="email">Email </label>
-                              <input name="email" type="text" class="form-control" value="<%=s.getEmail()%>" id="email" placeholder="Enter Your Email..."disabled>
-                     
-                            </fieldset>
-                          </div>
-                          
-                          <div class="col-md-6">
-                            <fieldset>
-                                <label for="gender">Gender </label>
-                              <input name="gender" type="text" class="form-control" value="<%=s.getGender()%>" id="gender" placeholder="Enter Your Gender...">
-                     
-                            </fieldset>
-                          </div>
-                          
-                          
-                        
-                          <div class="col-md-6">
-                            <fieldset>
-                                <label for="address">Address </label>
-                              <textarea name="address"  class="form-control" id="address" placeholder="Enter Your Address..." required><%=s.getAddress() %></textarea>
-                            </fieldset>
-                          </div>
-                         
-                          <div class="col-md-6">
-                            <fieldset>
-                                <label for="sscmarks">10th Marks</label>
-                              <input name="sscmarks" type="number" value="<%=s.getSscmarks() %>" class="form-control" id="sscmarks" placeholder="Enter your 10th Percentage" required>
-                            </fieldset>
-                          </div>
-
-                          <div class="col-md-6">
-                            <fieldset>
-                                <label for="hscmarks">12th Marks </label>
-                              <input name="hscmarks" type="number" value="<%=s.getHscmarks()%>" class="form-control" id="hscmarks" placeholder="Enter Your 12th Percentage">
-                            </fieldset>
-                          </div>
-
-                          <div class="col-md-6">
-                            <fieldset>
-                                <label for="diploma">Diploma percentage </label>
-                              <input name="diploma" type="number" class="form-control" value="<%=s.getDiploma() %>" id="diploma" placeholder="Your diploma Percentage">
-                            </fieldset>
-                          </div>
-                         
-                          <div class="col-md-6">
-                            <fieldset>
-                                <label for="ugmarks">Graduation Marks</label>
-                              <input name="ugmarks" type="number" value="<%=s.getUgmarks() %>" class="form-control" id="ugmarks" placeholder="Your Graduation percentage" required>
-                            </fieldset>
-                          </div>
-                          
-                           <div class="col-md-6">
-                            <fieldset>
-                                <label for="Branch">Branch</label>
-                              <input name="branch" type="text" value="<%=s.getBranch()%>" class="form-control" id="Branch" placeholder="Your Branch  " required>
-                            </fieldset>
-                          </div>
-
-                          <div class="col-md-6">
-                            <fieldset>
-                                <label for="dob">Date of birth </label>
-                              <input name="dob" type="date" value="<%=s.getDob()%>" class="form-control" id="dob" placeholder="Your Date of birth" required>
-                            </fieldset>
-                          </div>
-
-                          <div class="col-md-6">
-                            <fieldset>
-                                <label for="phoneno">Phone Number</label>
-                              <input name="phoneno" type="text" value="<%=s.getPhoneno() %>" class="form-control" id="phoneno" placeholder="Enter Your phone number" required>
-                            </fieldset>
-                          </div>
-                        <br><br>
-                         
-                          <div class="col-12">
-                            <h6>Skills</h6>
-                            <textarea name="skills" id="demo-message" placeholder="Enter your skills" rows="6"><%=s.getSkills() %></textarea>
-                          </div>
-                          
-                             <div class="col-md-6">
-                            <button type="submit" id="form-submit" class="button" >Save </button>
-                          </div>
-                          <br><br>
-                          
-                  
-                                         <%
+            if(str == null){
+            	response.sendRedirect("Studentlogin.jsp");
             }
-                         %>
+            
+            else{
+            	List<Student> l =Daolayer.StudentProfilDetail(str);
+            	
+            	  for(Student s:l)
+                  	
+                  {%>
 
+
+                  <!-- Forms -->
+                  <section class="forms">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="section-heading">
+                              <h2>My Profile</h2>
+                            </div>
+                            <form id="contact" action="myprofiledeatils.jsp" method="post">
+
+
+                              <div class="row">
+
+                                <div class="col-md-6">
+                                  <fieldset>
+                                      <label for="fname">First Name </label>
+                                    <input name="fname" type="text" class="form-control"  value="<%=s.getFname() %>" id="fname" placeholder="Enter your First name..." disabled >
+                             
+                                  </fieldset>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <fieldset>
+                                      <label for="mname">Middle Name </label>
+                                    <input name="mname" type="text" class="form-control"  value="<%= s.getMname()%>" id="mname" placeholder="Enter Your middle name..."disabled>
+                                 
+                                  </fieldset>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <fieldset>
+                                      <label for="lname"> Last Name </label>
+                                    <input name="lname" type="text" class="form-control"  value="<%=s.getLname() %>" id="lname" placeholder="Enter Your Lastname..." disabled>
+                                 
+                                  </fieldset>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <fieldset>
+                                      <label for="email">Email </label>
+                                    <input name="email" type="text" class="form-control" value="<%=s.getEmail()%>" id="email" placeholder="Enter Your Email..."disabled>
+                           
+                                  </fieldset>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                  <fieldset>
+                                      <label for="gender">Gender </label>
+                                    <input name="gender" type="text" class="form-control" value="<%=s.getGender()%>" id="gender" placeholder="Enter Your Gender...">
+                           
+                                  </fieldset>
+                                </div>
+                                
+                                
+                              
+                                <div class="col-md-6">
+                                  <fieldset>
+                                      <label for="address">Address </label>
+                                    <textarea name="address"  class="form-control" id="address" placeholder="Enter Your Address..." required><%=s.getAddress() %></textarea>
+                                  </fieldset>
+                                </div>
+                               
+                                <div class="col-md-6">
+                                  <fieldset>
+                                      <label for="sscmarks">10th Marks</label>
+                                    <input name="sscmarks" type="text" value="<%=s.getSscmarks() %>" class="form-control" id="sscmarks" placeholder="Enter your 10th Percentage" required>
+                                  </fieldset>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <fieldset>
+                                      <label for="hscmarks">12th Marks </label>
+                                    <input name="hscmarks" type="text" value="<%=s.getHscmarks()%>" class="form-control" id="hscmarks" placeholder="Enter Your 12th Percentage">
+                                  </fieldset>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <fieldset>
+                                      <label for="diploma">Diploma percentage </label>
+                                    <input name="diploma" type="text" class="form-control" value="<%=s.getDiploma() %>" id="diploma" placeholder="Your diploma Percentage">
+                                  </fieldset>
+                                </div>
+                               
+                                <div class="col-md-6">
+                                  <fieldset>
+                                      <label for="ugmarks">Graduation Marks</label>
+                                    <input name="ugmarks" type="text" value="<%=s.getUgmarks() %>" class="form-control" id="ugmarks" placeholder="Your Graduation percentage" required>
+                                  </fieldset>
+                                </div>
+                                
+                                 <div class="col-md-6">
+                                  <fieldset>
+                                      <label for="Branch">Branch</label>
+                                    <input name="branch" type="text" value="<%=s.getBranch()%>" class="form-control" id="Branch" placeholder="Your Branch  " required>
+                                  </fieldset>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <fieldset>
+                                      <label for="dob">Date of birth </label>
+                                    <input name="dob" type="date" value="<%=s.getDob()%>" class="form-control" id="dob" placeholder="Your Date of birth" required>
+                                  </fieldset>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <fieldset>
+                                      <label for="phoneno">Phone Number</label>
+                                    <input name="phoneno" type="text" value="<%=s.getPhoneno() %>" class="form-control" id="phoneno" placeholder="Enter Your phone number" required>
+                                  </fieldset>
+                                </div>
+                              <br><br>
+                               
+                                <div class="col-12">
+                                  <h6>Skills</h6>
+                                  <textarea name="skills" id="demo-message" placeholder="Enter your skills" rows="6"><%=s.getSkills() %></textarea>
+                                </div>
+                                
+                                   <div class="col-md-6">
+                                  <button type="submit" id="form-submit" class="button" >Save </button>
+                                </div>
+                                <br><br>
+                                
+                        
+                                               <%
+                  }
+            }
+                               %>
+
+            
+            
+           
+          
 
                        
 

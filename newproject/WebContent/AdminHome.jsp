@@ -98,8 +98,7 @@ https://templatemo.com/tm-529-ramayana
                 </div>
               </section>
 
-              <br><br><br><br>
-              <a href="index.jsp"><button> Logout </button></a>
+             
 
 
             
