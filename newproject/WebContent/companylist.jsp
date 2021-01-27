@@ -64,7 +64,14 @@ https://templatemo.com/tm-529-ramayana
                       <h2>COMPANIES </h2>
                     </div>
                     <div class="default-table">
-                      <table>
+                    <%
+                    List<Company> l =Daolayer.selectallcompanies();
+                    
+                    if(l.isEmpty()==true){ %>
+                    	<h1>Companies Not Yet Added</h1>
+                   <%  }
+                    else{%>
+                    	<table>
                         <thead>
                           <tr>
                             <th>ID</th>
@@ -79,7 +86,7 @@ https://templatemo.com/tm-529-ramayana
                         <tbody>
                         
                          <%
-            List<Company> l =Daolayer.selectallcompanies();
+           
             
             for(Company c:l)
             
@@ -99,9 +106,9 @@ https://templatemo.com/tm-529-ramayana
 							<td><%=c.getCriteria() %></td>
 							<td><%=c.getRole() %></td>
 							<td><%=c.getDate() %></td>
-							<td><a href="Admineditcompany.jsp?compid=<%=c.getCompid() %>">Edit</a>
-							&nbsp
-							 <a href="Admindeletecompany.jsp?compid=<%=c.getCompid() %>">Delete</a></td>
+							<td><a href="Admineditcompany.jsp?compid=<%=c.getCompid() %>">Edit</a></td>
+							
+							 <td><a href="Admindeletecompany.jsp?compid=<%=c.getCompid() %>">Delete</a></td>
 						</tr>
 				
 		
@@ -112,7 +119,10 @@ https://templatemo.com/tm-529-ramayana
                         
                        
                       </table>
-                    </div>
+                    	
+                   <%  }
+                    %>
+                         </div>
                    
                     </div>
                   </div>

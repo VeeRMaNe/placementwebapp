@@ -62,7 +62,13 @@ https://templatemo.com/tm-529-ramayana
                       <h2>STUDENTS </h2>
                     </div>
                     <div class="default-table">
-                      <table>
+                    <% 
+                    List<Student> l =Daolayer.getstudentlist();
+                    if(l.isEmpty()==true){ %>
+                    	<h1>Student Not Yet Added</h1>	
+                   <%}
+                    else{ %>
+                    	<table>
                         <thead>
                           <tr>
                             <th>PRN</th>
@@ -76,7 +82,7 @@ https://templatemo.com/tm-529-ramayana
                         </thead>
                         <tbody>
                                     <%
-            List<Student> l =Daolayer.getstudentlist();
+            
             
             for(Student s:l)
             
@@ -108,7 +114,10 @@ https://templatemo.com/tm-529-ramayana
                         
                        
                       </table>
-                    </div>
+                    	
+                   <%  }
+                    %>
+                        </div>
                    
                     </div>
                   </div>

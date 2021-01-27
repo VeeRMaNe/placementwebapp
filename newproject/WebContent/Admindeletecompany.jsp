@@ -14,12 +14,15 @@
  
  String compid=request.getParameter("compid");
  System.out.println(compid);
- boolean delete=Daolayer.deletecompany(compid);
+ boolean delete=Daolayer.deleteCompanyByAdmin(compid);
  
  if (delete==true)
 	 response.sendRedirect("companylist.jsp"); 
- else
-	 out.println("<h1>Opps Something Went Wrong!!! </h1>");
+ else{ %>
+	 
+	 <script>alert("Something Went Wrong!!");</script>
+	 <jsp:include page="companylist.jsp"></jsp:include>
+ <%}
  
  %>
 

@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -482,63 +482,14 @@ public class Daolayer {
 			
 			
 			
-			//delete company by admin
-			public static boolean deletecompany(String compid)  {
-				System.out.println(compid);
-				boolean rowDeleted=false;
-				try  {
-					
-				
-						String select = "select * from companies where compid=?";
-						PreparedStatement ps = conn.prepareStatement(select);
-						ps.setString(1, compid);
-						ResultSet res = ps.executeQuery();
-						if(res.next()) {
-							
-							String compname = res.getString("compname");
-							System.out.println(compname);
-							String del  = "delete from info where compname=?";
-							PreparedStatement ps2 = conn.prepareStatement(del);
-							ps2.setString(1, compname);
-							int y = ps2.executeUpdate();
-							if(y>=1) {
-								System.out.println("Info delte ");
-								PreparedStatement statement = conn.prepareStatement("delete from companies where compid=?");
-								statement.setString(1, compid);
-								int x = statement.executeUpdate();
-								if(x>=1) {
-									rowDeleted = true;
-								}
-								else {
-									rowDeleted = false;
-								}
-							}
-							else {
-								rowDeleted = false;
-							}
-						}
-						else {
-							rowDeleted= false;
-						}
-					
-						
-				
-				}
-				catch(SQLException e) {
-					e.printStackTrace();
-					
-				}
-				
-				return rowDeleted;
-			}
-
+		
 
 			
 			
 			//student password change
 			  public static boolean Studentupdatepassword(String currentp,String newpass,String confirmpass,String prn) {
 			    	boolean st=false;
-			    	int abc=0;
+			    	
 			    	Daolayer.getInstance();
 			    	try {
 			    		System.out.println("starting to updating password");
@@ -1087,7 +1038,46 @@ public class Daolayer {
 	    
 	    
 	    
-	    
+	    //deleting company by admin
+	    public static boolean deleteCompanyByAdmin(String compid) {
+	    	boolean status = false;
+	    	
+	    	Daolayer.getInstance();
+	    	try {
+				String compname = Daolayer.getCompanyName(compid);
+				if(compname!=null) {
+					// first deleting info table company name;
+					String del = "delete from info where compname =?";
+					PreparedStatement ps = conn.prepareStatement(del);
+					ps.setString(1, compname);
+					int x = ps.executeUpdate();
+					if(x>=1) {
+						//deleting company from companies table
+						String del_Comp = "delete from companies where compid=?";
+						PreparedStatement ps2 = conn.prepareStatement(del_Comp);
+						ps2.setString(1, compid);
+						int y = ps2.executeUpdate();
+						if(y>=1) {
+							status = true;
+						}
+						else {
+							status = false;
+						}
+					}
+					else {
+						status = false;
+					}
+				}else {
+					System.out.println("Company not found");
+					status = false;
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+	    	
+	    	return status;
+	    }
 	    
 	    
 	    
